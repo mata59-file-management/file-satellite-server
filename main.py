@@ -52,14 +52,6 @@ def main():
             """ Closing the file. """
             file.close()
 
-            """ Receiving the fault tolerance level for the file """
-            tolerance_level = conn.recv(SIZE).decode(FORMAT)
-            print(
-                f"[RECV] Receiving the fault tolerance level ({tolerance_level}).")
-            # print(f"FAULT TOLERANCE: {tolerance_level}")
-            conn.send(
-                f"Fault tolerance level received ({tolerance_level}).".encode(FORMAT))
-
         else:
             print("Arquivo inválido enviado pelo servidor!")
 
