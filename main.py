@@ -6,23 +6,23 @@ from socket_service import start_satellite
 
 
 def main():
-    print("[STARTING] Satellite Server is starting.")
+    print("# Satellite Server is starting #")
 
     server = start_satellite()
 
     while True:
-        """ Server has accepted the connection from the main server. """
+        # Server has accepted the connection from the main server
         conn, addr = server.accept()
         print(f"# {addr} connected #")
 
-        """ Receiving the operation identifier from the main server. """
+        # Receiving the operation identifier from the main server
         operation_id = conn.recv(SIZE).decode(FORMAT)
         print(f"# Receiving the operation identifier #")
         conn.send("# Operation identifier received #".encode(FORMAT))
 
-        """ Receiving the filename from the main server. """
+        # Receiving the filename from the main server
         filename = conn.recv(SIZE).decode(FORMAT)
-        print(f"[RECV] Receiving the filename: {filename}")
+        print(f"# Receiving the filename: {filename} #")
         conn.send("Filename received".encode(FORMAT))
 
         if operation_id == DEPOSIT_ID:
@@ -32,10 +32,10 @@ def main():
         elif operation_id == DELETE_ID:
             handle_delete(filename, conn)
 
-        """ Closing the connection from the main server. """
+        # Closing the connection from the main server
         conn.close()
-        print(f"[DISCONNECTED] {addr} disconnected.")
-        print("[LISTENING] Satellite Server is listening again.")
+        print(f"# {addr} disconnected #")
+        print("# Satellite Server is listening again #")
 
 
 if __name__ == "__main__":

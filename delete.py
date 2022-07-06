@@ -2,7 +2,7 @@ from constants import FORMAT, SIZE
 import os
 
 def handle_delete(filename, conn):
-  print("Began deletion...")
+  print("# Start deletion... #")
   try:
     os.remove(filename)
 
@@ -14,4 +14,4 @@ def handle_delete(filename, conn):
     print(f"# Arquivo {filename} não existe no servidor #")
     conn.send("NOT_FOUND".encode(FORMAT))
     msg = conn.recv(SIZE).decode(FORMAT)
-    print(f"Main server: {msg}")
+    print(f"# Main server: {msg} #")
