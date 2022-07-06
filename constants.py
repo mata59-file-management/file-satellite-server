@@ -12,3 +12,4 @@ MAX_SATELLITE_INSTANCES = 5
 
 DEPOSIT_ID = "deposit"
 RETRIEVE_ID = "retrieve"
+DELETE_ID = "delete"

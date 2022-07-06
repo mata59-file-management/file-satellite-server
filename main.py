@@ -1,4 +1,5 @@
-from constants import DEPOSIT_ID, FORMAT, RETRIEVE_ID, SIZE
+from constants import DELETE_ID, DEPOSIT_ID, FORMAT, RETRIEVE_ID, SIZE
+from delete import handle_delete
 from deposit import handle_deposit
 from retrieve import handle_retrieve
 from socket_service import start_satellite
@@ -28,6 +29,8 @@ def main():
             handle_deposit(filename, conn)
         elif operation_id == RETRIEVE_ID:
             handle_retrieve(filename, conn)
+        elif operation_id == DELETE_ID:
+            handle_delete(filename, conn)
 
         """ Closing the connection from the main server. """
         conn.close()
